@@ -10,7 +10,8 @@ on:
 jobs:
   snap:
     uses: canonical/robotics-actions-workflows/.github/workflows/snap.yaml@main
+    with:
       snap-test-script: |
         rerun help
-      secrets:
-        snapstore-login: ${{ secrets.SNAPSTORE_LOGIN }}
+    secrets:
+      snapstore-login: ${{ secrets.SNAPSTORE_LOGIN }}
