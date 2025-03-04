@@ -4,7 +4,24 @@ on:
   workflow_dispatch:
 
 jobs:
-  snap:
+  list-assignees:
+    runs-on: ubuntu-latest
+    outputs:
+      assignees: ${{ steps.retrieve.outputs.assignees }}
+    steps:
+      - name: "Retrieve assignees from API"
+        id: retrieve
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          issue_assignees=$(gh api -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" /orgs/canonical/teams/robotics/members \
+            -q '.[] | select(has("login")) | .login' | paste -s -d, -)
+            echo "assignees=${issue_assignees}" >> "$GITHUB_OUTPUT"
+
+  monitor-upstream-release:
+    needs: list-assignees
     uses: canonical/robotics-actions-workflows/.github/workflows/simple-upstream-monitor.yaml@feat/upstream-sync
     with:
       source-repo: "rerun-io/rerun"
+      assignee: "${{ needs.list-assignees.outputs.assignees }}"
