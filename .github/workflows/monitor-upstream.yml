@@ -8,4 +8,3 @@ jobs:
     uses: canonical/robotics-actions-workflows/.github/workflows/simple-upstream-monitor.yaml@feat/upstream-sync
     with:
       source-repo: "rerun-io/rerun"
-      issue-assignee: "@canonical/robotics"
