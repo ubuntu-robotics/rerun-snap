@@ -5,6 +5,6 @@ on:
 
 jobs:
   monitor-upstream-release:
-    uses: canonical/robotics-actions-workflows/.github/workflows/upstream-gh-tag-monitor.yaml@feat/upstream-sync
+    uses: canonical/robotics-actions-workflows/.github/workflows/upstream-gh-tag-monitor.yaml@main
     with:
       source-repo: "rerun-io/rerun"
