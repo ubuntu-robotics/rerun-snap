@@ -51,6 +51,5 @@ parts:
 
       git config --global --add safe.directory '*'
       version="$(git describe --always --tags --exclude='weekly' | sed -e 's/^v//;s/-/+git/;y/-/./')"
-      [ -n "$(echo $version | grep "+git")" ] && grade=devel || grade=stable
       craftctl set version="$version"
-      craftctl set grade="$grade"
+      craftctl set grade="stable"

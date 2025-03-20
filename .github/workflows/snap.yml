@@ -13,5 +13,6 @@ jobs:
     with:
       snap-test-script: |
         rerun help
+      snap-risk: candidate
     secrets:
       snapstore-login: ${{ secrets.SNAPSTORE_LOGIN }}
