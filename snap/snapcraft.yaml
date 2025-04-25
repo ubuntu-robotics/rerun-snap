@@ -44,7 +44,7 @@ parts:
     rust-features: [grpc, map_view, nasm, native_viewer]
     override-build: |
       # Build rerun-cli package
-      cargo build --package rerun-cli --release --no-default-features --features grpc,map_view,nasm,native_viewer
+      cargo build --package rerun-cli --release --no-default-features --features map_view,nasm,native_viewer
 
       # Copy the executables to the install dir
       find "${CRAFT_PART_BUILD}/target/release" -maxdepth 1 -executable -exec install -Dvm755 {} "${CRAFT_PART_INSTALL}" ';'
