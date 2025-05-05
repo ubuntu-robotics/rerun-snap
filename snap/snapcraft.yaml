@@ -37,7 +37,7 @@ parts:
   rerun:
     plugin: rust
     source: https://github.com/rerun-io/rerun.git
-    source-tag: 0.23.0
+    source-tag: 0.23.1
     build-packages: [nasm]
     rust-cargo-parameters: ["--package", "rerun-cli"]
     rust-no-default-features: True
