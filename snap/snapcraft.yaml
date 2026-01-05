@@ -11,17 +11,14 @@ description: |
   Use the Rerun SDK (available for C++, Python and Rust) to log data like images,
   tensors, point clouds, and text.
   Logs are streamed to the Rerun Viewer for live visualization or to file for later use.
-
 issues: https://github.com/ubuntu-robotics/rerun-snap/issues
 contact: canonical-robotics-community-group@canonical.com
 source-code: https://github.com/ubuntu-robotics/rerun-snap
 website: https://rerun.io/
 license: Apache-2.0
 icon: snap/gui/rerun-icon.png
-
 confinement: strict
 base: core24
-
 apps:
   rerun:
     command: rerun
@@ -32,12 +29,11 @@ apps:
       - network
       - network-bind
       - removable-media
-
 parts:
   rerun:
     plugin: rust
     source: https://github.com/rerun-io/rerun.git
-    source-tag: 0.27.2
+    source-tag: 0.28.1
     build-packages: [nasm]
     rust-cargo-parameters: ["--package", "rerun-cli"]
     rust-no-default-features: True
