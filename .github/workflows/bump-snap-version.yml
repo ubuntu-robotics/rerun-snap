@@ -7,4 +7,4 @@ on:
 
 jobs:
   bump-snap-version:
-    uses: canonical/robotics-actions-workflows/.github/workflows/bump-snap-version.yaml
+    uses: canonical/robotics-actions-workflows/.github/workflows/bump-snap-version.yaml@main
