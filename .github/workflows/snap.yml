@@ -15,5 +15,6 @@ jobs:
       snap-test-script: |
         rerun help
       snap-risk: candidate
+      snapcraft-channel: "8.x/stable"
     secrets:
       snapstore-login: ${{ secrets.SNAPSTORE_LOGIN }}
