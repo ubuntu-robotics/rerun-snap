@@ -1,5 +1,6 @@
 name: rerun
 adopt-info: rerun
+title: Rerun
 summary: Visualize streams of multimodal data
 description: |
   Rerun is building the multimodal data stack to model,
@@ -30,14 +31,23 @@ apps:
       - network-bind
       - removable-media
 parts:
+  # See https://github.com/canonical/snapcraft/issues/6330
+  # The rustup snap is built on core26 and breaks under the gnome SDK's
+  # core24 LD_LIBRARY_PATH (GLIBC_PRIVATE symbol mismatch), so install
+  # rustup via rustup.rs instead of the snap.
+  rust-deps:
+    plugin: nil
+    build-packages: [curl, ca-certificates]
+    override-build: |
+      curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o rustup-init.sh
+      sh rustup-init.sh -y --default-toolchain 1.96.0 --profile minimal
   rerun:
     plugin: rust
+    after: [rust-deps]
+    rust-channel: "none"
     source: https://github.com/rerun-io/rerun.git
     source-tag: 0.33.1
     build-packages: [nasm]
-    rust-cargo-parameters: ["--package", "rerun-cli"]
-    rust-no-default-features: True
-    rust-features: [grpc, map_view, nasm, native_viewer]
     override-build: |
       # Build rerun-cli package
       cargo build --package rerun-cli --release --no-default-features --features map_view,nasm,native_viewer
