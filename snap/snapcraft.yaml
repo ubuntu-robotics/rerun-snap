@@ -1,5 +1,6 @@
 name: rerun
 adopt-info: rerun
+title: Rerun
 summary: Visualize streams of multimodal data
 description: |
   Rerun is building the multimodal data stack to model,
