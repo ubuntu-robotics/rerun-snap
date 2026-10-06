@@ -46,7 +46,7 @@ parts:
     after: [rust-deps]
     rust-channel: "none"
     source: https://github.com/rerun-io/rerun.git
-    source-tag: 0.33.1
+    source-tag: 0.38.1
     build-packages: [nasm]
     override-build: |
       # Build rerun-cli package
