@@ -15,6 +15,6 @@ jobs:
     if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'failure'
     permissions:
       actions: read  # to name the failed job/step of a CI run
-    uses: canonical/robotics-actions-workflows/.github/workflows/webhook.yaml@main
+    uses: canonical/robotics-actions-workflows/.github/workflows/webhook.yaml@feat/webhook
     secrets:
       MM_WEBHOOK_URL: ${{ secrets.MM_WEBHOOK_URL }}
